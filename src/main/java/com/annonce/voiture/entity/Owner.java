@@ -22,5 +22,5 @@ public class Owner {
     private String phoneNumber;
     private String password;
     @ManyToMany
-    Set<Role> roles;
+    private Set<Role> roles;
 }
