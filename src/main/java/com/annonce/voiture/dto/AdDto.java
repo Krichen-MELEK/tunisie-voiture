@@ -1,13 +1,17 @@
 package com.annonce.voiture.dto;
 
 import com.annonce.voiture.entity.Ad;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class AdDto {
     private Long id;
     private String title;

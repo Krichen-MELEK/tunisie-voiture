@@ -1,6 +1,8 @@
 package com.annonce.voiture.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +14,8 @@ import java.util.Set;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Owner {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
