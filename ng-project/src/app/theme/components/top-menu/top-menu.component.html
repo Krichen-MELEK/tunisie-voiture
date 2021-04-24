@@ -1,38 +1,15 @@
-<div class="top-menu">    
-
-    <a mat-button [matMenuTriggerFor]="currencyMenu" #currencyMenuTrigger="matMenuTrigger">
-        {{currency}}<mat-icon class="mat-icon-sm caret">arrow_drop_down</mat-icon>
-    </a>
-    <mat-menu #currencyMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-dropdown">
-        <span (mouseleave)="currencyMenuTrigger.closeMenu()">
-            <button mat-menu-item *ngFor="let cur of currencies" (click)="changeCurrency(cur)">
-                <span>{{cur}}</span>
-            </button>
-        </span>
-    </mat-menu> 
-
-    <a mat-button [matMenuTriggerFor]="langMenu" #langMenuTrigger="matMenuTrigger"> 
-        <img [src]="'assets/images/flags/'+translateService.currentLang+'.svg'" width="18" [alt]="translateService.currentLang">   
-        <span fxShow="false" fxShow.gt-sm class="flag-menu-title">{{getLangText(translateService.currentLang)}}</span>
-        <mat-icon class="mat-icon-sm caret">arrow_drop_down</mat-icon>
-    </a>
-    <mat-menu #langMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-dropdown">
-        <span (mouseleave)="langMenuTrigger.closeMenu()"> 
-            <button *ngFor="let lang of translateService.getLangs()" mat-menu-item (click)="changeLang(lang)">  
-                <img [src]="'assets/images/flags/'+lang+'.svg'" width="18" [alt]="lang" class="mat-elevation-z1"> 
-                <span class="px-1">{{getLangText(lang)}}</span>   
-            </button> 
-        </span>
-    </mat-menu>
+<div class="top-menu">
 
     <span fxShow="false" fxShow.gt-sm>
-        <a mat-button routerLink="/compare">{{ 'COMPARE' | translate }} <span *ngIf="settings.rtl">&rlm;</span>({{appService.Data.compareList.length}})</a>
-        <a mat-button routerLink="/wishlist">{{ 'WISHLIST' | translate }} <span *ngIf="settings.rtl">&rlm;</span>({{appService.Data.wishList.length}})</a>
-    </span>  
+        <a mat-button routerLink="/compare">{{ 'COMPARE' | translate }} <span
+                *ngIf="settings.rtl">&rlm;</span>({{appService.Data.compareList.length}})</a>
+        <a mat-button routerLink="/wishlist">{{ 'WISHLIST' | translate }} <span
+                *ngIf="settings.rtl">&rlm;</span>({{appService.Data.wishList.length}})</a>
+    </span>
 
     <a mat-button [matMenuTriggerFor]="accountMenu" #accountMenuTrigger="matMenuTrigger">
-        <mat-icon class="mat-icon-sm account-icon">person</mat-icon> 
-        <span fxShow="false" fxShow.gt-sm>{{ 'ACCOUNT' | translate }}</span> 
+        <mat-icon class="mat-icon-sm account-icon">person</mat-icon>
+        <span fxShow="false" fxShow.gt-sm>{{ 'ACCOUNT' | translate }}</span>
         <mat-icon class="mat-icon-sm caret">arrow_drop_down</mat-icon>
     </a>
     <mat-menu #accountMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-dropdown account">

@@ -1,20 +1,20 @@
-import { Component, OnInit, HostListener, ViewChild, Inject, PLATFORM_ID } from '@angular/core'; 
-import { Router, NavigationEnd } from '@angular/router';
-import { Settings, AppSettings } from '../app.settings';
-import { AppService } from '../app.service';
-import { Category } from '../app.models';
-import { SidenavMenuService } from '../theme/components/sidenav-menu/sidenav-menu.service';
-import { isPlatformBrowser } from '@angular/common';
+import {Component, HostListener, Inject, OnInit, PLATFORM_ID, ViewChild} from '@angular/core';
+import {NavigationEnd, Router} from '@angular/router';
+import {AppSettings, Settings} from '../app.settings';
+import {AppService} from '../app.service';
+import {Category} from '../app.models';
+import {SidenavMenuService} from '../theme/components/sidenav-menu/sidenav-menu.service';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
-  selector: 'app-pages',
-  templateUrl: './pages.component.html',
-  styleUrls: ['./pages.component.scss'],
-  providers: [ SidenavMenuService ]
+    selector: 'app-pages',
+    templateUrl: './pages.component.html',
+    styleUrls: ['./pages.component.scss'],
+    providers: [SidenavMenuService]
 })
 export class PagesComponent implements OnInit {
-  public showBackToTop:boolean = false; 
-  public categories:Category[];
+    public showBackToTop: boolean = false;
+    public categories: Category[];
   public category:Category;
   public sidenavMenuItems:Array<any>;
   @ViewChild('sidenav', { static: true }) sidenav:any;
@@ -32,7 +32,7 @@ export class PagesComponent implements OnInit {
     this.getCategories();
     this.sidenavMenuItems = this.sidenavMenuService.getSidenavMenuItems();
     setTimeout(() => {
-      this.settings.theme = 'green'; 
+        this.settings.theme = 'grey';
     });
   } 
 
@@ -70,11 +70,6 @@ export class PagesComponent implements OnInit {
     this.appService.Data.cartList.length = 0;
     this.appService.Data.totalPrice = 0;
     this.appService.Data.totalCartCount = 0;
-  }
- 
-
-  public changeTheme(theme){
-    this.settings.theme = theme;       
   }
 
   public stopClickPropagate(event: any){
