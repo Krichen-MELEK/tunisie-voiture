@@ -17,6 +17,7 @@ public class OwnerDto {
     private String lastName;
     private String email;
     private String phoneNumber;
+    private String password;
     private Set<RoleDto> roles;
 
     public OwnerDto(Owner owner) {
@@ -35,6 +36,7 @@ public class OwnerDto {
         owner.setLastName(lastName);
         owner.setEmail(email);
         owner.setPhoneNumber(phoneNumber);
+        owner.setPassword(password);
         owner.setRoles(roles.stream().map(RoleDto::convert).collect(Collectors.toSet()));
         return owner;
     }

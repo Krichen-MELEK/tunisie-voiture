@@ -37,20 +37,20 @@ public class InitDatabase {
         if (!initDatabase) return;
         // create roles
         Set<Role> roleDtoList = new HashSet<>();
-        Role role = new Role(null, "Admin");
-        Role role1 = new Role(null, "User");
+        Role role = new Role(null, "ADMIN");
+        Role role1 = new Role(null, "OWNER");
         roleDtoList.add(role);
         roleDtoList.add(role1);
         roleRepository.saveAll(roleDtoList);
 
         // create users
         List<Owner> owners = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1; i++) {
             Owner owner = new Owner(null,
                     String.format("Melek_%d", i),
                     String.format("Krichen_%d", i),
                     String.format("Melek%d.Krichen_%d@gmail.com", i, i),
-                    "12345678",
+                    "12345678"+i,
                     "123",
                     new HashSet<>(Collections.singletonList(role1)));
             owners.add(owner);
@@ -59,7 +59,7 @@ public class InitDatabase {
                 "admin",
                 "admin",
                 "admin@gmail.com",
-                "12345678",
+                "9912345678",
                 "admin",
                 roleDtoList);
         owners.add(admin);
@@ -67,7 +67,7 @@ public class InitDatabase {
 
         // create Ads
         List<Ad> ads = new ArrayList<>();
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 1; i++) {
             Ad ad = new Ad(null, "Ad title", "desc", "address", new Date(), new Date(), "registration number",
                     null, "110 km", "essence", "4 cv", "auto", "external equipments",
                     "internal equipments", "security equipments", null, owners.get(i % 100));
