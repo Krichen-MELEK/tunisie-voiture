@@ -12,5 +12,5 @@ import java.util.Optional;
 public interface OwnerRepository extends JpaRepository<Owner, Long> {
 
   @Query("select o from Owner o where o.phoneNumber = :phoneNumber")
-  Optional<Owner> findByUsername(@Param("phoneNumber") String phoneNumber);
+  Optional<Owner> findByPhoneNumber(@Param("phoneNumber") String phoneNumber);
 }

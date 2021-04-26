@@ -1,5 +1,6 @@
 package com.annonce.voiture.security;
 
+import com.annonce.voiture.configuration.CustomAuthenticationProvider;
 import com.annonce.voiture.configuration.JwtTokenFilter;
 import com.annonce.voiture.repository.OwnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -21,11 +21,9 @@ import org.springframework.web.filter.CorsFilter;
 
 import javax.servlet.http.HttpServletResponse;
 
-import static java.lang.String.format;
-
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(
-    prePostEnabled = true
+        prePostEnabled = true
 )
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -33,15 +31,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   private OwnerRepository ownerRepository;
   @Autowired
   private JwtTokenFilter jwtTokenFilter;
+  @Autowired
+  private CustomAuthenticationProvider customAuthenticationProvider;
 
   @Override
-  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    auth.userDetailsService(username -> ownerRepository.findByUsername(username)
-        .orElseThrow(
-            () -> new UsernameNotFoundException(
-                format("User: %s, not found", username)
-            )
-        ));
+  protected void configure(AuthenticationManagerBuilder auth) {
+    auth.authenticationProvider(customAuthenticationProvider);
   }
 
   @Override

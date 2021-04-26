@@ -9,6 +9,7 @@ import com.annonce.voiture.repository.OwnerRepository;
 import com.annonce.voiture.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -50,8 +51,10 @@ public class InitDatabase {
                     String.format("Melek_%d", i),
                     String.format("Krichen_%d", i),
                     String.format("Melek%d.Krichen_%d@gmail.com", i, i),
-                    "12345678"+i,
-                    "123",
+                    "12345678" + i,
+                    new BCryptPasswordEncoder().encode("123"),
+                    false,
+                    null,
                     new HashSet<>(Collections.singletonList(role1)));
             owners.add(owner);
         }
@@ -60,7 +63,9 @@ public class InitDatabase {
                 "admin",
                 "admin@gmail.com",
                 "9912345678",
-                "admin",
+                new BCryptPasswordEncoder().encode("admin"),
+                false,
+                null,
                 roleDtoList);
         owners.add(admin);
         ownerRepository.saveAll(owners);

@@ -18,6 +18,7 @@ public class OwnerDto {
     private String email;
     private String phoneNumber;
     private String password;
+    private Boolean isValidPassword;
     private Set<RoleDto> roles;
 
     public OwnerDto(Owner owner) {
@@ -26,6 +27,7 @@ public class OwnerDto {
         lastName = owner.getLastName();
         email = owner.getEmail();
         phoneNumber = owner.getPhoneNumber();
+        isValidPassword = owner.getIsValidPassword();
         roles = owner.getRoles().stream().map(RoleDto::new).collect(Collectors.toSet());
     }
 

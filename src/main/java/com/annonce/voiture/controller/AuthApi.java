@@ -3,6 +3,7 @@ package com.annonce.voiture.controller;
 import com.annonce.voiture.configuration.JwtTokenUtil;
 import com.annonce.voiture.dto.OwnerDto;
 import com.annonce.voiture.entity.Owner;
+import com.annonce.voiture.service.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -22,32 +23,38 @@ import javax.validation.Valid;
 @RequestMapping(path = "api/public")
 public class AuthApi {
 
-  @Autowired
-  private AuthenticationManager authenticationManager;
-  @Autowired
-  private JwtTokenUtil jwtTokenUtil;
+    @Autowired
+    private AuthenticationManager authenticationManager;
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
+    @Autowired
+    private OwnerService ownerService;
 
-  @PostMapping("login")
-  public ResponseEntity<OwnerDto> login(@RequestBody @Valid OwnerDto request) {
-    try {
-      Authentication authenticate = authenticationManager
-          .authenticate(
-              new UsernamePasswordAuthenticationToken(
-                  request.getPhoneNumber(), request.getPassword()
-              )
-          );
+    @PostMapping("login")
+    public ResponseEntity<OwnerDto> login(@RequestBody @Valid OwnerDto request) {
+        try {
+            Authentication authenticate = authenticationManager
+                    .authenticate(
+                            new UsernamePasswordAuthenticationToken(
+                                    request.getPhoneNumber(), request.getPassword()
+                            )
+                    );
 
-      Owner owner = (Owner) authenticate.getPrincipal();
+            Owner owner = (Owner) authenticate.getPrincipal();
 
-      return ResponseEntity.ok()
-          .header(
-              HttpHeaders.AUTHORIZATION,
-              jwtTokenUtil.generateAccessToken(owner)
-          )
-          .body(new OwnerDto(owner));
-    } catch (BadCredentialsException ex) {
-      return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            return ResponseEntity.ok()
+                    .header(
+                            HttpHeaders.AUTHORIZATION,
+                            jwtTokenUtil.generateAccessToken(owner)
+                    )
+                    .body(new OwnerDto(owner));
+        } catch (BadCredentialsException ex) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
     }
-  }
 
+    @PostMapping("pre_login")
+    public void preLogin(@RequestBody @Valid OwnerDto request) throws Exception {
+        ownerService.preLogin(request.getPhoneNumber());
+    }
 }

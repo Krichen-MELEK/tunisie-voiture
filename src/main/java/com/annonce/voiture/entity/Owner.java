@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -31,22 +32,28 @@ public class Owner implements UserDetails {
     @Column(unique = true)
     private String phoneNumber;
     private String password;
+    private Boolean isValidPassword;
+    private Date expiredDatePassword;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
-    @Override public Collection<? extends GrantedAuthority> getAuthorities() {
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles;
     }
 
-    @Override public String getUsername() {
+    @Override
+    public String getUsername() {
         return phoneNumber;
     }
 
-    @Override public boolean isAccountNonExpired() {
+    @Override
+    public boolean isAccountNonExpired() {
         return true;
     }
 
-    @Override public boolean isAccountNonLocked() {
+    @Override
+    public boolean isAccountNonLocked() {
         return true;
     }
 
