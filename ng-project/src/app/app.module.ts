@@ -27,6 +27,7 @@ import {AppSettings} from './app.settings';
 import {AppService} from './app.service';
 import {AppInterceptor} from './theme/utils/app-interceptor';
 import {FooterComponent} from './theme/components/footer/footer.component';
+import { LoginComponent } from './auth/login/login.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient, environment.url + '/assets/i18n/', '.json');
@@ -60,7 +61,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MenuComponent,
     SidenavMenuComponent,
     BreadcrumbComponent,
-      FooterComponent
+      FooterComponent,
+      LoginComponent
   ], 
   providers: [
     AppSettings,

@@ -53,19 +53,20 @@
             </div>  
             <div fxFlex="20" fxLayout="row" fxLayoutAlign="end center">   
                 <div fxLayoutAlign="center center" [@.disabled]="true">
-                    <button mat-button [matMenuTriggerFor]="cartMenu" #cartMenuTrigger="matMenuTrigger" class="flex-row-button">
-                        <mat-icon class="mat-icon-lg">shopping_cart</mat-icon>
-                        <span *ngIf="appService.Data.totalCartCount > 0" class="cart-items-count">{{appService.Data.totalCartCount}}</span>
-                        <div fxLayout="column" fxLayoutAlign="center center" fxShow="false" fxShow.gt-xs class="top-cart">
-                            <span>Shopping Cart</span>
-                            <span *ngIf="appService.Data.totalCartCount > 0">
-                                <bdi>{{appService.Data.totalCartCount}} item<span *ngIf="appService.Data.totalCartCount > 1">s</span> - 
-                                    $<span>{{appService.Data.totalPrice | number : '1.2-2'}}</span>
-                                </bdi>
-                            </span>
-                        </div>
-                        <mat-icon class="mat-icon-sm">arrow_drop_down</mat-icon>
-                    </button>
+                    <button mat-raised-button color="white" >Se connecter</button>
+<!--                    <button mat-button [matMenuTriggerFor]="cartMenu" #cartMenuTrigger="matMenuTrigger" class="flex-row-button">-->
+<!--                        <mat-icon class="mat-icon-lg">shopping_cart</mat-icon>-->
+<!--                        <span *ngIf="appService.Data.totalCartCount > 0" class="cart-items-count">{{appService.Data.totalCartCount}}</span>-->
+<!--                        <div fxLayout="column" fxLayoutAlign="center center" fxShow="false" fxShow.gt-xs class="top-cart">-->
+<!--                            <span>Shopping Cart</span>-->
+<!--                            <span *ngIf="appService.Data.totalCartCount > 0">-->
+<!--                                <bdi>{{appService.Data.totalCartCount}} item<span *ngIf="appService.Data.totalCartCount > 1">s</span> - -->
+<!--                                    $<span>{{appService.Data.totalPrice | number : '1.2-2'}}</span>-->
+<!--                                </bdi>-->
+<!--                            </span>-->
+<!--                        </div>-->
+<!--                        <mat-icon class="mat-icon-sm">arrow_drop_down</mat-icon>-->
+<!--                    </button>-->
                     <mat-menu #cartMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="top-menu-dropdown cart-dropdown">
                         <ng-template matMenuContent>
                             <span (mouseleave)="cartMenuTrigger.closeMenu()" class="d-block">
