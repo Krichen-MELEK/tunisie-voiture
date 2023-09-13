@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  web:
+    image: my-node
+    container_name: ng-project
+    build:
+      context: ./ng-project
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./ng-project/:/app
+
+  db:
+    image: postgres:latest
+    container_name: postgres-bd
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: "root"
+    volumes:
+      - ./data:/data
