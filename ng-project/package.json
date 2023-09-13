@@ -3,7 +3,7 @@
   "version": "2.5.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --host 0.0.0.0",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -45,7 +45,7 @@
     "zone.js": "0.11.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "0.1100.5",
+    "@angular-devkit/build-angular": "^0.1100.5",
     "@angular/cli": "11.0.5",
     "@angular/compiler-cli": "11.0.5",
     "@angular/language-service": "11.0.5",
