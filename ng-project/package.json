@@ -35,7 +35,7 @@
     "express": "4.15.2",
     "ngx-pagination": "5.0.0",
     "ngx-perfect-scrollbar": "10.0.1",
-    "ngx-spinner": "^11.0.2",
+    "ngx-spinner": "13.1.1",
     "ngx-swiper-wrapper": "10.0.0",
     "rxjs": "6.6.3",
     "swiper": "6.4.5",
