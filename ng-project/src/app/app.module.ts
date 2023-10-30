@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {NgxSpinnerModule} from 'ngx-spinner';
-import {AgmCoreModule} from '@agm/core';
+// import {AgmCoreModule} from '@agm/core';
 
 import {Overlay, OverlayContainer} from '@angular/cdk/overlay';
 import {MAT_MENU_SCROLL_STRATEGY} from '@angular/material/menu';
@@ -39,9 +39,9 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         BrowserAnimationsModule,
         HttpClientModule,
         NgxSpinnerModule,
-        AgmCoreModule.forRoot({
-            apiKey: 'AIzaSyAO7Mg2Cs1qzo_3jkKkZAKY6jtwIlm41-I'
-    }),
+        // AgmCoreModule.forRoot({
+        //     apiKey: 'AIzaSyAO7Mg2Cs1qzo_3jkKkZAKY6jtwIlm41-I'
+    // }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
