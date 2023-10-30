@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
-
-import { InputFileConfig, InputFileModule } from 'ngx-input-file';
-const config: InputFileConfig = {
-  fileAccept: '*'
-};
+//
+// import { InputFileConfig, InputFileModule } from 'ngx-input-file';
+// const config: InputFileConfig = {
+//   fileAccept: '*'
+// };
 
 import { AdminComponent } from './admin.component';
 import { MenuComponent } from './components/menu/menu.component';
@@ -48,7 +48,7 @@ export const routes = [
     CommonModule,
     RouterModule.forChild(routes),
     SharedModule,
-    InputFileModule.forRoot(config),
+    // InputFileModule.forRoot(config),
   ]
 })
 export class AdminModule { }
