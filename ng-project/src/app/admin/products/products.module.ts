@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SwiperModule } from 'ngx-swiper-wrapper';
-import { InputFileModule } from 'ngx-input-file';
+// import { InputFileModule } from 'ngx-input-file';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductZoomComponent } from './product-detail/product-zoom/product-zoom.component';
@@ -39,7 +39,7 @@ export const routes = [
     SharedModule,
     NgxPaginationModule,
     SwiperModule,
-    InputFileModule
+    // InputFileModule
   ]
 })
 export class ProductsModule { }
